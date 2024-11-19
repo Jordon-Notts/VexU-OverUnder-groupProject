@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.6.0",
+		"json": 2
+	},
+	"project": {
+		"name": "sdfdsg",
+		"description": "",
+		"creationDate": "11/12/2024, 10:38:23 AM",
+		"platform": "V5",
+		"language": "python",
+		"slot": 8,
+		"sdkVersion": "V5_1_0_1_19",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}
