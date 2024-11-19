@@ -23,14 +23,11 @@ It is important to find out if the combined error after moving to several consec
 
 # Download the code
 
-
 > [!error] Todo
 > - [x] Document how to install the programming software
 > - [ ] How to pull project from git.
 
 # Upload
-
-
 
 > [!error] Todo
 > Document how to upload the sketch to the vex brain v5
@@ -40,6 +37,8 @@ It is important to find out if the combined error after moving to several consec
 ## Competition modes
 
 The controllers are connected to the VEXnet Field Controller for the entirety of the game.
+
+!(images\Pasted image 20241112105355.png)
 
 ![[Pasted image 20241112105355.png]]
 
@@ -82,7 +81,7 @@ We can either create call-backs for each of the buttons or manually poll each bu
 The function to be called, lets say we have a functions that operates the grab mechanism:
 
 ```python
-grab_is_open = True;
+grab_is_open = True
 
 def grab_toggle()
 	# This will open the grab mecanism if closed and close it if open

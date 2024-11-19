@@ -1,6 +1,8 @@
 # Library imports
 from vex import *
 
+from lib.control import ClassControl
+
 import vex as vx
 
 # Brain should be defined by default
@@ -13,44 +15,15 @@ controller_1 = Controller(PRIMARY)
 left_motor = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
 right_motor = Motor(Ports.PORT10, GearSetting.RATIO_18_1, True)
 
-# Begin project code
-# Create callback functions for each controller button event
-def controller_L1_Pressed():
-    arm_motor.spin(FORWARD)
-    while controller_1.buttonL1.pressing():
-        wait(5, MSEC)
-    arm_motor.stop()
+# Example usage:
+# Assuming `controller_1`, `arm_motor`, and `claw_motor` are already defined and initialized
+control = ClassControl(controller_1, arm_motor, claw_motor)
 
-def controller_L2_Pressed():
-    arm_motor.spin(REVERSE)
-    while controller_1.buttonL2.pressing():
-        wait(5, MSEC)
-    arm_motor.stop()
 
-def controller_R1_Pressed():
-    claw_motor.spin(REVERSE)
-    while controller_1.buttonR1.pressing():
-        wait(5, MSEC)
-    claw_motor.stop()
 
-def controller_R2_Pressed():
-    claw_motor.spin(FORWARD)
-    while controller_1.buttonR2.pressing():
-        wait(5, MSEC)
-    claw_motor.stop()
 
-# Create Controller callback events - 15 msec delay to ensure events get registered
-controller_1.buttonL1.pressed(controller_L1_Pressed)
-controller_1.buttonL2.pressed(controller_L2_Pressed)
-controller_1.buttonR1.pressed(controller_R1_Pressed)
-controller_1.buttonR2.pressed(controller_R2_Pressed)
-wait(15, MSEC)
 
-# Configure Arm and Claw motor hold settings and velocity
-arm_motor.set_stopping(HOLD)
-claw_motor.set_stopping(HOLD)
-arm_motor.set_velocity(60, PERCENT)
-claw_motor.set_velocity(30, PERCENT)
+
 
 # Main Controller loop to set motors to controller axis postiions
 while True:
