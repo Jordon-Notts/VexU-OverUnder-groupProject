@@ -1,21 +1,3 @@
-# ----------------------------------------------------------------------------- #
-#                                                                               #                                                                          
-#    Project:        Clawbot Controller with Events                             #
-#    Module:         main.py                                                    #
-#    Author:         VEX                                                        #
-#    Created:        Fri Aug 05 2022                                            #
-#    Description:    This example will use Controller button events to          # 
-#                    control the V5 Clawbot arm and claw                        #
-#                                                                               #                                                                          
-#    Configuration:  V5 Clawbot (Individual Motors)                             #
-#                    Controller                                                 #
-#                    Claw Motor in Port 3                                       #
-#                    Arm Motor in Port 8                                        #
-#                    Left Motor in Port 1                                       #
-#                    Right Motor in Port 10                                     #
-#                                                                               #                                                                          
-# ----------------------------------------------------------------------------- #
-
 # Library imports
 from vex import *
 
@@ -57,10 +39,6 @@ def controller_R2_Pressed():
         wait(5, MSEC)
     claw_motor.stop()
 
-
-
-
-
 # Create Controller callback events - 15 msec delay to ensure events get registered
 controller_1.buttonL1.pressed(controller_L1_Pressed)
 controller_1.buttonL2.pressed(controller_L2_Pressed)
@@ -81,6 +59,5 @@ while True:
     left_motor.spin(FORWARD)
     right_motor.spin(FORWARD)
     wait(5, MSEC)
-
 
     controller_1.
