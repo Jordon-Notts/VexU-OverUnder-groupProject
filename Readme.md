@@ -38,7 +38,7 @@ It is important to find out if the combined error after moving to several consec
 
 The controllers are connected to the VEXnet Field Controller for the entirety of the game.
 
-!(images\Pasted image 20241112105355.png)
+![image](images\Pasted image 20241112105355.png)
 
 ![[Pasted image 20241112105355.png]]
 
