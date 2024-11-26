@@ -16,16 +16,6 @@ A number of trials need to be carried out during the in person weeks, for inform
 
 For a log of changes please see [build log](Log.md)
 
-
-
-
-
-
-
-
-
----
-
 ---
 
 ## Updated `Go_to_position` Function
