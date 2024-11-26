@@ -6,11 +6,11 @@ The group project is to build two robots to compete in the VexU over under compe
 
 ## Install
 
-To install the software and upload the code to the robots please see (Install documentation)[Install.md].
+To install the software and upload the code to the robots please see [Install documentation](Install.md).
 
 ## Trials
 
-A number of trials need to be carried out during the in person weeks, for information on the trials see (Trail information)[Trials.md]
+A number of trials need to be carried out during the in person weeks, for information on the trials see [Trail information](Trials.md)
 
 
 
