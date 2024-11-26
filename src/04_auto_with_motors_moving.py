@@ -56,6 +56,8 @@ def control_wheels(rotate_left_wheel_by, rotate_right_wheel_by):
     while left_motor.is_spinning() or right_motor.is_spinning():
         wait(20, MSEC)
 
+    
+
 def update_position(new_x=None, new_y=None, new_a=None):
     global actual_x, actual_y, actual_a
     if new_x is not None:
