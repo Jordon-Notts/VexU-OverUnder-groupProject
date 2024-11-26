@@ -139,3 +139,16 @@ class RobotNavigator_calcs:
 
         # Debug output
         print(f"[Update Position] New Position: ({self.x:.2f}, {self.y:.2f}), Angle: {self.a:.2f}°")
+
+if __name__ == "__main__":
+
+    movementCalc = RobotNavigator_calcs(starting_x=0, # the starting x position of the robot on the feild in mm
+                                        starting_y=0, # the starting y position of the robot on the feild in mm
+                                        starting_a=90,  # the starting angle of the robot on the feild in degrees
+                                        wheel_radius=50, # The radius of the robot wheels in mm
+                                        robot_width_between_wheels=350 # the distance between wheels of the robot in mm
+    )
+
+    angle, distance = movementCalc.calculate_target_angle_and_distance(2500,2500) # The the robot needs to move to possition 2500,2500, the robot will need to rotate to face the angle and move a distance.
+
+    leftWheel, RightWheel = movementCalc.calculate_wheel_rotation_rotation_mode(90)
