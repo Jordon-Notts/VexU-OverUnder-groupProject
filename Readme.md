@@ -1,36 +1,101 @@
-# Trials
+# Electro-mechanical Engineering Degree Apprenticeship, Electromechinical group project, Year 2024-2025
 
-These are a list of things to test during the December in person week.
-### Switching between games mode
+This is the code for the Electromechinical group project.
 
-Does the VEXnet Field Controller, switch automatically between auto mode and driver control mode. [[Programming structure#Functions#Driver control mode]]
-### Test the Go_to_position function
+The group project is to build two robots to compete in the VexU over under compertision. The VEXu over under was held last year, so the robots wont be entered in the offical compertition.
 
-Test to see if the Go to position function actually causes the robot to go to the desired location. [[Programming structure#Go to position]]
+## Install
 
-It is important to find out if the combined error after moving to several consecutive locations is too big to be useable for the 45 seconds of autonomous game play.
-# Install
+To install the software and upload the code to the robots please see (Install documentation)[../Install.md].
 
-1. Install vs code
-	* go to https://code.visualstudio.com/
-	* Install vscode
-2. Install the VEX extention
-	* click this icon 
-		![[Pasted image 20241112102703.png]]
-	* search for vex robotics.
-		![[Pasted image 20241112102757.png]]
-	* Install the extension.
+## Trials
 
-# Download the code
+A number of trials need to be carried out during the in person weeks, for information on the trials see (Trail information)[../Trials.md]
 
-> [!error] Todo
-> - [x] Document how to install the programming software
-> - [ ] How to pull project from git.
 
-# Upload
 
-> [!error] Todo
-> Document how to upload the sketch to the vex brain v5
+
+
+
+
+
+
+
+
+---
+
+## New Additions
+
+### Class-based Navigation System
+We introduced the `RobotNavigator_calcs` class to handle all calculations related to robot movement and orientation. This modular approach simplifies managing the robot's navigation logic.
+
+#### Key Features:
+1. **Target Angle and Distance Calculation**:
+    - Calculates the angle and distance to a target position relative to the robot's current position.
+    - Handles the geometry and provides the required rotation and travel distance.
+    
+    Example:
+    ```python
+    desired_angle, distance = robot_nav.calculate_target_angle_and_distance(x_position, y_position)
+    ```
+
+2. **Angle Difference Calculation**:
+    - Determines the shortest angular difference between the robot's current orientation and a target angle.
+    - Normalizes the difference to be between `-180°` and `180°`.
+
+    Example:
+    ```python
+    angle_difference = robot_nav.calculate_angle_difference(desired_angle)
+    ```
+
+3. **Wheel Rotation for Rotation Mode**:
+    - Calculates the degrees the wheels need to rotate in opposite directions to turn the robot in place by a specific angle.
+
+    Example:
+    ```python
+    left_rotation, right_rotation = robot_nav.calculate_wheel_rotation_rotation_mode(angle_difference)
+    ```
+
+4. **Wheel Rotation for Driving Forward**:
+    - Calculates the degrees the wheels need to rotate to drive forward by a specific distance.
+
+    Example:
+    ```python
+    left_rotation, right_rotation = robot_nav.calculate_wheel_rotation_drive_mode(distance)
+    ```
+
+5. **State Update**:
+    - Updates the robot's internal state (position and orientation) after movement or rotation.
+
+    Example:
+    ```python
+    robot_nav.update_position(new_x=500, new_y=500, new_a=90)
+    ```
+
+---
+
+## Updated `Go_to_position` Function
+The `Go_to_position` function now integrates the `RobotNavigator_calcs` class and includes the following steps:
+1. **Rotate to Face the Target**:
+    - Calculates the angle difference to the target.
+    - Rotates the robot to face the target position.
+
+2. **Drive Forward**:
+    - Calculates the distance to the target position.
+    - Commands the robot to drive forward to the target position.
+
+3. **Rotate to Final Heading** *(Optional)*:
+    - If a final heading is provided, rotates the robot to the desired orientation.
+
+Example:
+```python
+Go_to_position(500, 500, final_heading=90)
+
+```
+
+
+
+---
 
 # Functions
 
