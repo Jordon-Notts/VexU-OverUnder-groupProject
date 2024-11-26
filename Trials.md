@@ -2,6 +2,12 @@
 
 This appentiship is block release, as such assess to the physical robots is limited. Calculations can be carried out remotly, however testing the code that drives the robots can only be carried out during the in person weeks. Below in a list of tests to be carried out during the December in person week.
 
+### Document how to upload to the robot
+
+The user guide for how to upload the code to the robot is incomplete. This need to be carried out in person
+
+please see [Install.md](Install.md)
+
 ### Switching between games mode
 
 Does the VEXnet Field Controller, switch automatically between auto mode and driver control mode?
