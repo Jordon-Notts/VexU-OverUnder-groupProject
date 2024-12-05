@@ -21,9 +21,31 @@ left_control_input = controller.axis3
 # right_control_input = controller_1.axis3.position()
 right_control_input = controller.axis2
 
+button_R1 = controller.buttonR1
+button_R2 = controller.buttonR2
+
 # Create drive motors
 left_motor = Motor(Ports.PORT2, GearSetting.RATIO_18_1)
 right_motor = Motor(Ports.PORT10, GearSetting.RATIO_18_1)
+
+head_motor = Motor(Ports.PORT3, GearSetting.RATIO_18_1)
+
+def head_up():
+
+    head_motor.spin_to_position(180, DEGREES,25,RPM,True)
+    print_to_brain("Head up",5)
+
+    pass
+
+def head_down():
+
+    head_motor.spin_to_position(0, DEGREES,25,RPM,True)
+    print_to_brain("Head down",5)
+
+    pass
+
+controller.buttonR1.pressed(head_up)
+controller.buttonR2.pressed(head_down)
 
 def print_to_brain(message, row):
 

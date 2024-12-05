@@ -1,3 +1,5 @@
+# Accelleration ramp
+
 # Robot Initialization Parameters
 starting_x = 0  # Initial x-coordinate of the robot
 starting_y = 0  # Initial y-coordinate of the robot
@@ -162,10 +164,12 @@ brain = Brain()  # Brain object to control the robot
 left_motor = Motor(Ports.PORT2, GearSetting.RATIO_18_1)
 right_motor = Motor(Ports.PORT10, GearSetting.RATIO_18_1)
 
-def print_to_brain(message):
+def print_to_brain(message, row):
 
     global brain
-    brain.screen.clear_screen()
+
+    brain.screen.clear_row(row)
+    brain.screen.set_cursor(row,1)
     brain.screen.print(message)
 
 def control_wheels(rotate_left_wheel_by, rotate_right_wheel_by):
@@ -176,20 +180,119 @@ def control_wheels(rotate_left_wheel_by, rotate_right_wheel_by):
         rotate_left_wheel_by (float): Rotation for the left wheel in degrees.
         rotate_right_wheel_by (float): Rotation for the right wheel in degrees.
     """
-    # Debug output for the requested wheel rotations
-    # print_to_brain(f"[Control Wheels] Left: {rotate_left_wheel_by:.2f}°, Right: {rotate_right_wheel_by:.2f}°")
-    
-    # Reset the motor positions to ensure accurate movement
+
     left_motor.reset_position()
     right_motor.reset_position()
-    
+
+    def direction(value, switch_direction=False):
+
+        if switch_direction == False:
+            if value >= 0:
+                return DirectionType.FORWARD
+            else:
+                return DirectionType.REVERSE
+        else:
+            if value >= 0:
+                return DirectionType.REVERSE
+            else:
+                return DirectionType.FORWARD
+        
+    left_direction = direction(rotate_left_wheel_by)
+    right_direction = direction(rotate_right_wheel_by, True)
+
+    U = 0
+    V_max = 500
+    a = 25
+
+    def calc_v_at_s(U,a,s,V_max):
+
+        # V = math.sqrt(abs(U^2+2*a*s))
+
+        try:
+
+            V = math.sqrt(U**2+(2*a*s))
+
+            print_to_brain(V,6)
+
+        except:
+
+            V = 0
+
+            print_to_brain(V,0)
+
+        if V < 1:
+            return 1
+        elif V <= V_max:
+            return V
+        else:
+            return V_max
+
     # Command the motors to spin to the specified positions
-    left_motor.spin_to_position(rotate_left_wheel_by, DEGREES, 35, RPM, wait=False)
-    right_motor.spin_to_position(-rotate_right_wheel_by, DEGREES, 35, RPM, wait=False)
+
+    left_motor.spin(left_direction,U)
+    right_motor.spin(right_direction, U)
+
+    # Running = True
+
+    right_end = False
+    left_end = False
     
     # Wait for the motors to finish spinning before proceeding
-    while left_motor.is_spinning() or right_motor.is_spinning():
-        wait(5, MSEC)  # Check motor status every 20 milliseconds
+    while True:
+    # while left_motor.is_spinning() or right_motor.is_spinning():
+
+        position_left = abs(left_motor.position(DEGREES))
+        position_right = abs(left_motor.position(DEGREES))
+
+        if abs(position_left) <= abs(rotate_left_wheel_by)/2:
+
+            # print_to_brain(type(position),1)
+
+            speed_left = abs(calc_v_at_s(U,a,position_left,V_max))
+            speed_right = abs(calc_v_at_s(U,a,position_right,V_max))
+
+            left_motor.spin(left_direction,speed_left)
+            right_motor.spin(right_direction,speed_right)
+
+            print_to_brain(FORWARD,1)
+
+            wait(1, MSEC)  # Check motor status every 20 milliseconds
+
+            # v_max_so_far = speed
+
+        print_to_brain(position_left,2)
+        print_to_brain(speed_left,3)
+        print_to_brain(rotate_left_wheel_by,4)
+
+        if abs(position_left) >= abs(rotate_left_wheel_by)/2:
+
+            speed_left = abs(calc_v_at_s(U,a,abs(rotate_left_wheel_by)-abs(position_left)-10,V_max))
+            speed_right = abs(calc_v_at_s(U,a,abs(rotate_right_wheel_by)-abs(position_right)-10,V_max))
+
+            left_motor.spin(left_direction,speed_left)
+            right_motor.spin(right_direction,speed_right)
+
+            print_to_brain("Ramp down",1)
+
+            wait(1, MSEC)  # Check motor status every 20 milliseconds
+
+        if  abs(position_left) >= abs(rotate_left_wheel_by):
+
+            left_motor.spin(FORWARD,0)
+
+            left_end = True
+
+        if  abs(position_right) >= abs(rotate_right_wheel_by):
+
+            right_motor.spin(REVERSE,0)
+
+            right_end = True
+        
+        if right_end and left_end:
+
+            print_to_brain("END",1)
+
+            return
 
 def Go_to_position(x_position, y_position, final_heading=None):
     """
@@ -241,55 +344,26 @@ def Go_to_position(x_position, y_position, final_heading=None):
         robot_nav.update_position(new_a=final_heading)
 
 if __name__ == "__main__":
+
     """
     Entry point of the program. This block runs when the script is executed.
     Currently, no specific functionality is executed here.
     """
 
-    print_to_brain("1")
-
-    Go_to_position(500,0) # top left corner of a square
-    Go_to_position(500,500) # top left corner of a square
-    Go_to_position(0,500) # top left corner of a square
+    Go_to_position(1000,0) # top left corner of a square
+    # Go_to_position(7000,1000) # top left corner of a square
+    Go_to_position(1000,1000) # top left corner of a square
+    Go_to_position(0,1000) # top left corner of a square
+    Go_to_position(0,0,0) # top left corner of a square
+    
+    Go_to_position(1000,0) # top left corner of a square
+    # Go_to_position(7000,1000) # top left corner of a square
+    Go_to_position(1000,1000) # top left corner of a square
+    Go_to_position(0,1000) # top left corner of a square
     Go_to_position(0,0,0) # top left corner of a square
 
-    print_to_brain("2")
-
-    Go_to_position(500,0) # top left corner of a square
-    Go_to_position(500,500) # top left corner of a square
-    Go_to_position(0,500) # top left corner of a square
+    Go_to_position(1000,0) # top left corner of a square
+    # Go_to_position(7000,1000) # top left corner of a square
+    Go_to_position(1000,1000) # top left corner of a square
+    Go_to_position(0,1000) # top left corner of a square
     Go_to_position(0,0,0) # top left corner of a square
-
-    print_to_brain("3")
-
-    Go_to_position(500,0) # top left corner of a square
-    Go_to_position(500,500) # top left corner of a square
-    Go_to_position(0,500) # top left corner of a square
-    Go_to_position(0,0,0) # top left corner of a square
-
-    print_to_brain("4")
-
-    Go_to_position(500,0) # top left corner of a square
-    Go_to_position(500,500) # top left corner of a square
-    Go_to_position(0,500) # top left corner of a square
-    Go_to_position(0,0,0) # top left corner of a square
-
-    print_to_brain("5")
-
-    Go_to_position(500,0) # top left corner of a square
-    Go_to_position(500,500) # top left corner of a square
-    Go_to_position(0,500) # top left corner of a square
-    Go_to_position(0,0,0) # top left corner of a square
-
-    print_to_brain("End 5 times")
-
-    # Go_to_position(850,-1500) # top left corner of a square
-    # Go_to_position(850,1500) # top left corner of a square
-    # Go_to_position(0,500) # top left corner of a square
-    # Go_to_position(1000,1000) # top right
-    # Go_to_position(-1000,1000) # bottom right
-    # Go_to_position(-1000,-1000) # bottom left
-
-    # # back to centre
-
-    # Go_to_position(0,0, final_heading=0) # back to centre, and face the same direction
