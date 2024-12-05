@@ -26,8 +26,17 @@ https://github.com/Jordon-Notts/VexU-OverUnder-groupProject/archive/refs/heads/m
 
 unzip the main.zip
 
+open the folder with vscode
+
 # Upload
 
-> [!error] Todo
-> Document how to upload the sketch to the vex brain v5
+1. Connect the controller to the laptop
+
+In the lower bar there are options for upload
+
+![Lower bar](images\VSCODE_bar.png)
+
+to upload '01_driver_mode.py' to the robot, click on the icon on the right
+
+![alt text](images\Select program from list.png)
 

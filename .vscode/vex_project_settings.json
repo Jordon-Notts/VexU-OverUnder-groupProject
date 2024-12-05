@@ -1,18 +1,18 @@
 {
 	"extension": {
-		"version": "0.6.0",
+		"version": "0.6.1",
 		"json": 2
 	},
 	"project": {
-		"name": "sdfdsg",
+		"name": "Group2",
 		"description": "",
-		"creationDate": "11/12/2024, 10:38:23 AM",
+		"creationDate": "Mon, 02 Dec 2024 10:05:48 GMT",
 		"platform": "V5",
 		"language": "python",
 		"slot": 8,
-		"sdkVersion": "V5_1_0_1_19",
+		"sdkVersion": "V5_1_0_1_25",
 		"python": {
-			"main": "src/main.py"
+			"main": "src/07_Accel_Ramp.py"
 		}
 	}
 }

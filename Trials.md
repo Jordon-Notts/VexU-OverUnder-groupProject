@@ -29,10 +29,8 @@ Controller input made the motors turn, however the right joystick did not contro
 the following adjustments were made
 
 ```python
-
 * left_control_input = controller.axis3
 * right_control_input = controller.axis2
-
 ```
 
 and 
@@ -140,3 +138,10 @@ Another expariment was made, rubber bands were applied to the wheels with the in
 
 ![](images\12rpm_with_rubber.jpeg)
 
+A further test was carried out at 50rpm, the test had to be stopped as the error was too great to take meaningful results.
+
+The wheels skid at higher speeds. It was noticed that adding weight above the driving wheels increased the accuracy.
+
+It is unknown whether the robot can complete the objectives at its current speed in the required time.
+
+An acceleration ramp could be a solotion to the skid issue.
