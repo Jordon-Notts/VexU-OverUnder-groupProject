@@ -66,7 +66,7 @@ Does this code:
     1. switch between the different modes?
     2. allow the driver to contol the robot when in driver control mode?
 
-please see [02_combined...](src/02_combined_driver_and_games_Mode.py)
+please see [02_combined...](/src/02_combined_driver_and_games_Mode.py)
 
 ## Autonomous mode rotate on the spot
 
@@ -74,7 +74,7 @@ To test if the calculations for turning the robot on the spot are correct, a tes
 
 Does the robot turn on the spot be the desired angle?
 
-please see [04_rotate_90](src/04_rotate_90_degrees.py)
+please see [04_rotate_90](/src/04_rotate_90_degrees.py)
 
 #### Reflection
 
@@ -108,7 +108,7 @@ A script that directs the robot to a disired location has been writen.
 
 Does the robot go to the desired location?
 
-please see [05_auto_in_class](src/05_auto_in_class.py)
+please see [05_auto_in_class](/src/05_auto_in_class.py)
 
 ## Combined error
 
@@ -116,7 +116,7 @@ The robot has 45 seconds to complete its autonomous objectives. The robot is bli
 
 make a mark on the field, start the robot at this possiton. run the script, how far from the starting mark the the robot finish.
 
-please see [combined error test script](src\06_combined_error.py)
+please see [combined error test script](/src/06_combined_error.py)
 
 if the combine error is too big to be userble, 
 
@@ -128,15 +128,15 @@ if the combine error is too big to be userble,
 
 An experaiment was made doing 5 circuits of a 500mm square at 25rpm. the angle error at the end of the circuits was... The picture shows the final position after the 5 rotations, the bar in the picture can be used as a datum.
 
-![final picture 25 rpm](images\25rpm.jpeg)
+![final picture 25 rpm](/images/25rpm.jpeg)
 
 Another expariment was taken at 12rpm, again 5 circuits. the angle error was.
 
-![fianl picture 12 rpm](images\12rpm.jpeg)
+![fianl picture 12 rpm](/images/12rpm.jpeg)
 
 Another expariment was made, rubber bands were applied to the wheels with the intention of increasing grip. THis has the uninternted consequence of incresing the wheel radius. This was run at 12 rpm. The error after this run was far better.
 
-![final picture 12 rpm, with rubber](images\12rpm_with_rubber.jpeg)
+![final picture 12 rpm, with rubber](/images/12rpm_with_rubber.jpeg)
 
 A further test was carried out at 50rpm, the test had to be stopped as the error was too great to take meaningful results.
 
