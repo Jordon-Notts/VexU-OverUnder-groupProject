@@ -145,3 +145,20 @@ The wheels skid at higher speeds. It was noticed that adding weight above the dr
 It is unknown whether the robot can complete the objectives at its current speed in the required time.
 
 An acceleration ramp could be a solotion to the skid issue.
+
+## Acceleration ramp
+
+An acceleration ramp was programmed into the movement of the robot, this allows for slow accelleration and a slow decelleration resulting in no skids.
+
+The code was updated see [](/src/07_Accel_Ramp.py)
+
+#### Reflection
+
+A couple of parameter needed to be tweeked to make the code work, however the results were good. the robot could acheve a high overall speed, with out loosing its possition.
+
+A compined error trail was carried out with the new acceleration ramp software. the speed of the robot was increased however after a number of momement the robot still lost its position.
+
+It has been decided that the robot need to have some sort of positional feed back mechanism.
+
+# Trials March 2025 in person week
+
