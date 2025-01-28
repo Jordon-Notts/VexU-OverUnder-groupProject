@@ -128,15 +128,15 @@ if the combine error is too big to be userble,
 
 An experaiment was made doing 5 circuits of a 500mm square at 25rpm. the angle error at the end of the circuits was... The picture shows the final position after the 5 rotations, the bar in the picture can be used as a datum.
 
-![](images\25rpm.jpeg)
+![final picture 25 rpm](images\25rpm.jpeg)
 
 Another expariment was taken at 12rpm, again 5 circuits. the angle error was.
 
-![](images\12rpm.jpeg)
+![fianl picture 12 rpm](images\12rpm.jpeg)
 
 Another expariment was made, rubber bands were applied to the wheels with the intention of increasing grip. THis has the uninternted consequence of incresing the wheel radius. This was run at 12 rpm. The error after this run was far better.
 
-![](images\12rpm_with_rubber.jpeg)
+![final picture 12 rpm, with rubber](images\12rpm_with_rubber.jpeg)
 
 A further test was carried out at 50rpm, the test had to be stopped as the error was too great to take meaningful results.
 
