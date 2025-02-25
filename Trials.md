@@ -108,11 +108,17 @@ A script that directs the robot to a disired location has been writen.
 
 Does the robot go to the desired location?
 
-please see [05_auto_in_class](/src/05_auto_in_class.py)
+please see [05_auto_in_class](/src/Archive/05_auto_in_class.py)
+
+#### Reflection
+
+When the robot is commanded to turn to a specific heading and travel the specific point, ie xy coordinate. The robot does travel to the point, this seams to be promising plue or minus 2mm and plus or minus 2 degrees. Research into whether combined movments create combined errors, ie does chaining 5 plus movments mean the poistion of the robot is out by 100mm. Please see Combined error section.
 
 ## Combined error
 
 The robot has 45 seconds to complete its autonomous objectives. The robot is blind as it moves, the only way to know where the robot is, is by knowing where it has been. Each move will add and error to the location of the robot, the question is, is the combined error after 45 seconds worth of movments still userble. ie is a blind robot after lets say 10 moves still capable of accruatly collecting a triball?
+
+This expariment make the robot drive in a 500mm square, ie forward 500m right 90 degrees, foward 500mm then right 90 degrees, repeatedly until 5 squares have been completed.
 
 make a mark on the field, start the robot at this possiton. run the script, how far from the starting mark the the robot finish.
 
@@ -120,7 +126,7 @@ please see [combined error test script](/src/06_combined_error.py)
 
 if the combine error is too big to be userble, 
 
-1. can changes to the script increase the accuracy, 
+1. can changes to the script increase the accuracy (dial in wheel diameter and wheel span vairibles), 
    1. are there things i havent accounted for in my calculations
 2. additional sensors might need to be used.
 
@@ -140,11 +146,11 @@ Another expariment was made, rubber bands were applied to the wheels with the in
 
 A further test was carried out at 50rpm, the test had to be stopped as the error was too great to take meaningful results.
 
-The wheels skid at higher speeds. It was noticed that adding weight above the driving wheels increased the accuracy.
+It was found that the wheels skid at higher speeds. It was noticed that adding weight above the driving wheels increased the accuracy.
 
-It is unknown whether the robot can complete the objectives at its current speed in the required time.
+Due to the fact that the robot is required complete a series of moves within 45 seconds, at 50rpm this is too unreliable to complete this objective and at 12 rmp this is too slow to complete this objective.
 
-An acceleration ramp could be a solotion to the skid issue.
+An acceleration ramp could be a solotion to the skid and speed issue. 
 
 ## Acceleration ramp
 
@@ -160,5 +166,12 @@ A compined error trail was carried out with the new acceleration ramp software. 
 
 It has been decided that the robot need to have some sort of positional feed back mechanism.
 
+## Positional feedback
+
+
+
 # Trials March 2025 in person week
+
+1. Test comms between RPI and vex 5 brain
+2. Test camera possitioning system
 
